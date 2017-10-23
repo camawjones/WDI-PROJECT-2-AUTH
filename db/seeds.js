@@ -29,7 +29,40 @@ Skill
         firstName: 'Cam',
         lastName: 'Jones',
         username: 'cam',
+        image: 'http://fillmurray.com/300/300',
         email: 'cam@cam.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      }, {
+        firstName: 'Dave',
+        lastName: 'Jones',
+        username: 'dave',
+        image: 'http://fillmurray.com/300/300',
+        email: 'dave@dave.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      }, {
+        firstName: 'Phillis',
+        lastName: 'Jones',
+        username: 'phillis',
+        image: 'http://fillmurray.com/300/300',
+        email: 'phillis@phillis.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      }, {
+        firstName: 'Harry',
+        lastName: 'Jones',
+        username: 'harry',
+        image: 'http://fillmurray.com/300/300',
+        email: 'harry@harry.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      }, {
+        firstName: 'Mitesh',
+        lastName: 'Jones',
+        username: 'mitesh',
+        image: 'http://fillmurray.com/300/300',
+        email: 'mitesh@mitesh.com',
         password: 'password',
         passwordConfirmation: 'password'
       }]);

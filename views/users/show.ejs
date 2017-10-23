@@ -1,0 +1,28 @@
+<div class="container">
+  <img src="<%= user.image %>" alt="<%= user.name %>">
+  <h2><%= user.username %></h2>
+
+  <section>
+    <h3>Reviews</h3>
+    <% user.reviews.forEach((review) => { %>
+      <p><%= review.content %></p>
+      <p><%= review.rating %></p>
+      <img src="<%= review.createdBy.image %>">
+      <small><%= review.createdBy.username %></small>
+    <% }) %>
+  </section>
+
+  <% if(locals.isAuthenticated) { %>
+    <section>
+      <h3>Leave a review</h3>
+      <form method="POST" action="/users/<%= user.id %>/reviews">
+        <label for="rating">Rating</label>
+        <input id="rating" type="number" name="rating" placeholder="rating">
+
+        <label for="content">Review</label>
+        <textarea name="content" id="content" placeholder="Comment" required maxlength="255"></textarea>
+        <button class="button">Leave a review</button>
+      </form>
+    </section>
+  <% } %>
+</div>

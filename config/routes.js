@@ -13,18 +13,23 @@ router.route('/register')
 // INDEX
 router.get('/', (req, res) => res.render('statics/homepage'));
 
+router.route('/users')
+  .get(secureRoute, users.index);
+
 router.route('/users/:id/edit')
   .get(secureRoute, users.edit);
+
+router.route('/profile')
+  .get(secureRoute, users.profile);
 
 // UPDATE
 router.route('/users/:id')
   .get(secureRoute, users.show)
   .put(secureRoute, users.update);
 
-
-router.route('/users/:id/comments')
-  .post(secureRoute, users.createComment)
-  .delete(secureRoute, users.deleteComment);
+router.route('/users/:id/reviews')
+  .post(secureRoute, users.createReview)
+  .delete(secureRoute, users.deleteReview);
 
 // DELETE
 router.route('/logout')

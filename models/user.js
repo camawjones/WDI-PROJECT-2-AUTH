@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const commentSchema = new mongoose.Schema({
-  createdBy: {type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  content: { type: String, required: true }
+const reviewsSchema = new mongoose.Schema({
+  createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+  content: { type: String, required: true },
+  rating: { type: Number, required: true }
 });
 
 const userSchema = new mongoose.Schema({
@@ -11,10 +12,20 @@ const userSchema = new mongoose.Schema({
   lastName: {type: String, minLength: 2, required: true, trim: true},
   email: { type: String, required: true, trim: true, unique: true },
   username: { type: String, required: true, trim: true, unique: true },
-  // role: { type: String, enums: ['freelancer', 'client'], default: 'freelancer' },
-  // password: { type: String, required: true },
-  // skills: [{type: mongoose.Schema.ObjectId, ref: 'Skill' }],
-  comments: [commentSchema]
+  password: { type: String, required: true },
+  image: { type: String, required: true },
+  rating: { type: Number, required: true, default: 0 },
+  reviews: [reviewsSchema]
+});
+
+userSchema.pre('validate', function calculateRating(next) {
+  if (!this.reviews.length) {
+    this.rating = 0;
+  } else {
+    this.rating = (this.reviews.map(review => review.rating).reduce((total, next) => total + next) / this.reviews.length).toFixed();
+  }
+
+  return next();
 });
 
 userSchema.pre('save', function hashPassword(next) {

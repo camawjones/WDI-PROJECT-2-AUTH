@@ -17,7 +17,7 @@ function sessionCreate(req, res) {
       // console.log('heyyyyy');
       req.session.userId = user._id;
 
-      return res.redirect('/');
+      return res.redirect('/users');
     });
 }
 

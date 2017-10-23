@@ -1,7 +1,28 @@
 const User = require('../models/user');
 
-function showRoute(req, res) {
-  return res.render('registration/show');
+function indexRoute(req, res, next) {
+  User
+    .find()
+    .exec()
+    .then(users => {
+      res.render('users/index', { users });
+    })
+    .catch(next);
+}
+
+function profileRoute(req, res) {
+  return res.render('users/profile');
+}
+
+function showRoute(req, res, next) {
+  User
+    .findById(req.params.id)
+    .populate('reviews.createdBy')
+    .exec()
+    .then(user => {
+      return res.render('users/show', { user });
+    })
+    .catch(next);
 }
 
 function editRoute(req, res) {
@@ -21,7 +42,7 @@ function updateRoute(req, res, next) {
     });
 }
 
-function createCommentRoute(req, res, next) {
+function createReviewRoute(req, res, next) {
   User
     .findById(req.params.id)
     .exec()
@@ -29,7 +50,7 @@ function createCommentRoute(req, res, next) {
       if (!user) return res.notFound();
 
       req.body.createdBy = req.user;
-      user.comments.push(req.body);
+      user.reviews.push(req.body);
 
       return user.save();
     })
@@ -41,14 +62,14 @@ function createCommentRoute(req, res, next) {
 }
 
 //DELETECOMMENT
-function deleteCommentRoute(req, res, next) {
+function deleteReviewRoute(req, res, next) {
   User
     .findById(req.params.id)
     .exec()
     .then(user => {
       if (!user) return res.notFound();
       if (!user.belongsTo(req.user)) return res.unauthorized('You do not have permission to delete that resource');
-      user.comments.id(req.params.commentId).remove();
+      user.reviews.id(req.params.reviewId).remove();
 
       return user.save();
     })
@@ -57,9 +78,11 @@ function deleteCommentRoute(req, res, next) {
 }
 
 module.exports = {
+  index: indexRoute,
+  profile: profileRoute,
   show: showRoute,
   edit: editRoute,
   update: updateRoute,
-  createComment: createCommentRoute,
-  deleteComment: deleteCommentRoute
+  createReview: createReviewRoute,
+  deleteReview: deleteReviewRoute
 };

@@ -1,0 +1,27 @@
+<form method="POST" action="/hotels">
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required>
+  </div>
+  <fieldset>
+    <legend>Skills</legend>
+    <div>
+      <label for="skill1">Skill 1</label>
+      <input type="text" name="skill[skill1]" id="skill1" required>
+    </div>
+    <div>
+      <label for="skill2">Skill 2</label>
+      <input type="text" name="skill[skill2]" id="skill2">
+    </div>
+  </fieldset>
+  <div>
+    <label for="rating">rating</label>
+    <input type="number" name="rating" id="rating" min="1" max="10" required>
+  </div>
+  <div>
+    <label for="image">Image</label>
+    <input type="text" name="image" id="image" required>
+  </div>
+
+  <button class="button">Register</button>
+</form>

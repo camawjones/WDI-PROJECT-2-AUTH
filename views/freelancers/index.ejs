@@ -1,0 +1,17 @@
+<% freelancers.forEach((freelancer) => { %>
+  <div class="large-4 columns">
+    <a href="/freelancers/<%= freelancer.id %>">
+      <img class="thumbnail" src="<%= freelancer.image %>" alt="<%= freelancer.name %>">
+      <h2><%= freelancer.name %></h2>
+      <p>
+        <%= freelancer.skills.skill1 %><br>
+        <% if(freelancer.skills.skill2) { %><%= freelancer.skills.skill2 %><br><% } %>
+      </p
+      <p>
+        <% while(freelancer.rating--) { %> &rating; <% } %>
+      </p>
+
+      <small>Added by: <%= freelancer.createdBy.username %></small>
+    </a>
+  </div>
+<% }) %>

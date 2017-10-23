@@ -1,54 +1,30 @@
 const express = require('express');
 const router  = express.Router();
 // const statics = require('../controllers/statics');
-const registrations = require('../controllers/registration');
-const sessions = require('../controllers/session');
-const freelancers = require('../controllers/freelancers');
+const authentications = require('../controllers/authentications');
+const sessions = require('../controllers/sessions');
+const users = require('../controllers/users');
 const secureRoute = require('../lib/secureRoute');
 
 router.route('/register')
-  .get(registrations.new)
-  .post(registrations.create);
+  .get(authentications.new)
+  .post(authentications.create);
 
 // INDEX
 router.get('/', (req, res) => res.render('statics/homepage'));
 
-// // NEW
-router.route('/freelancers/new')
-  .get(secureRoute, freelancers.new);
+router.route('/users/:id/edit')
+  .get(secureRoute, users.edit);
 
-// SHOW
-router.route('/freelancers/:id')
-  .get(freelancers.show)
-  .put(secureRoute, freelancers.update)
-  .delete(secureRoute, freelancers.delete);
-
-// CREATE
-router.route('/freelancers')
-  .get(freelancers.index)
-  .post(secureRoute, freelancers.create);
-
-// EDIT
-router.route('/freelancers/:id/edit')
-  .get(secureRoute, freelancers.edit);
-
-router.route('/freelancers/:id/comments')
-  .post(secureRoute, freelancers.createComment)
-  .delete(secureRoute, freelancers.deleteComment);
-
-router.route('/profile/edit')
-  .get(secureRoute, registrations.edit);
 // UPDATE
-router.route('/profile')
-  .get(secureRoute, registrations.show)
-  .put(secureRoute, registrations.update)
-  .delete(secureRoute, registrations.delete);
-//secureRoute
+router.route('/users/:id')
+  .get(secureRoute, users.show)
+  .put(secureRoute, users.update);
 
-router.route('/freelancers/:id')
-  .get(freelancers.show)
-  .put(secureRoute, freelancers.update)
-  .delete(secureRoute, freelancers.delete);
+
+router.route('/users/:id/comments')
+  .post(secureRoute, users.createComment)
+  .delete(secureRoute, users.deleteComment);
 
 // DELETE
 router.route('/logout')

@@ -1,17 +1,18 @@
-<% freelancers.forEach((freelancer) => { %>
+<h1>Freelancers</h1>
+<% users.forEach((user) => { %>
   <div class="large-4 columns">
-    <a href="/freelancers/<%= freelancer.id %>">
-      <img class="thumbnail" src="<%= freelancer.image %>" alt="<%= freelancer.name %>">
-      <h2><%= freelancer.name %></h2>
+    <a href="/users/<%= user.id %>">
+      <img class="thumbnail" src="<%= user.image %>" alt="<%= user.name %>">
+      <h2><%= user.name %></h2>
       <p>
-        <%= freelancer.skills.skill1 %><br>
-        <% if(freelancer.skills.skill2) { %><%= freelancer.skills.skill2 %><br><% } %>
+        <%= user.skills.skill1 %><br>
+        <% if(user.skills.skill2) { %><%= user.skills.skill2 %><br><% } %>
       </p
       <p>
-        <% while(freelancer.rating--) { %> &rating; <% } %>
+        <% while(user.rating--) { %> &rating; <% } %>
       </p>
 
-      <small>Added by: <%= freelancer.createdBy.username %></small>
+      <small>Added by: <%= user.createdBy.username %></small>
     </a>
   </div>
 <% }) %>

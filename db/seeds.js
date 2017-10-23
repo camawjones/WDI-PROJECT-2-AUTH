@@ -6,39 +6,34 @@ mongoose.connect(dbUri, { useMongoClient: true });
 
 // Require the model
 const User = require('../models/user');
-const Freelancer = require('../models/freelancer');
+const Skill = require('../models/skill');
+
 // Drop the model
 User.collection.drop();
-Freelancer.collection.drop();
+Skill.collection.drop();
 // Create the models
-User
-  .create([{
-    firstName: 'Cam',
-    lastName: 'Jones',
-    email: 'cam@cam.com',
-    password: 'password',
-    passwordConfirmation: 'password'
-  }])
-  .then((users) => {
-    console.log(`${users.length} users wre created!`);
-    return Freelancer
+
+Skill
+  .create([
+    { name: 'Graphic Design' },
+    { name: 'Web Developer' },
+    { name: 'Animator' },
+    { name: 'PR/Marketing' },
+    { name: 'App developer' },
+    { name: 'UX Designer' }
+  ])
+  .then(skills => {
+    console.log(`${skills.length} skills were seeded`);
+    return User
       .create([{
-        name: 'Chev Dayson',
-        skill1: 'UX Developer',
-        image: '../images/man1.jpg',
-        Rating: 5
-      },
-      {
-        name: 'Kev Mayson',
-        skill1: 'Web Developer',
-        image: '../images/man1.jpg',
-        Rating: 5
+        firstName: 'Cam',
+        lastName: 'Jones',
+        username: 'cam',
+        email: 'cam@cam.com',
+        password: 'password',
+        passwordConfirmation: 'password'
       }]);
   })
-  .then((freelancers) => console.log(`${freelancers.length} freelancers were created!`))
+  .then((users) => console.log(`${users.length} users were created!`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
-
-const dbURL = process.env.MONGODB_URL ||
-'mongodb://localhost/all-the-birds';
-mongoose.connect(dbURL);

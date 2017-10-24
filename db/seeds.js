@@ -14,14 +14,16 @@ Skill.collection.drop();
 // Create the models
 
 Skill
-  .create([
-    { name: 'Graphic Design' },
-    { name: 'Web Developer' },
-    { name: 'Animator' },
-    { name: 'PR/Marketing' },
-    { name: 'App developer' },
-    { name: 'UX Designer' }
-  ])
+  .create([{
+    name: 'AngularJs',
+    icon: 'devicon-angularjs-plain'
+  }, {
+    name: 'Atom',
+    icon: 'devicon-atom-original'
+  }, {
+    name: 'C++',
+    icon: 'devicon-cplusplus-plain'
+  }])
   .then(skills => {
     console.log(`${skills.length} skills were seeded`);
     return User

@@ -40,25 +40,9 @@ app.use(methodOverride(function (req) {
 }));
 
 app.use((req, res, next) => {
-  if (!req.session.userId) return next();
-
-  User
-    .findById(req.session.userId)
-    .exec()
-    .then(user=> {
-      if (!user) {
-        return req.session.regenerate(() => {
-          res.redirect('/');
-        });
-      }
-      req.session.userId = user._id;
-      res.locals.user = user;
-      res.locals.isLoggedIn = true;
-
-      next();
-    });
+  global.activePath = req.path;
+  next();
 });
-
 
 app.use(authentication);
 app.use(errorHandler);

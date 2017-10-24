@@ -1,23 +1,36 @@
 const User = require('../models/user');
+const Skill = require('../models/skill');
 
 function indexRoute(req, res, next) {
+  const query = {};
+  if (req.query) {
+    query.skills = req.query.skills;
+  }
+
   User
     .find()
     .exec()
     .then(users => {
+      console.log(users);
       res.render('users/index', { users });
     })
     .catch(next);
 }
 
 function profileRoute(req, res) {
-  return res.render('users/profile');
+  User
+    .findById(req.currentUser)
+    .populate('skills')
+    .exec()
+    .then(user => {
+      res.render('users/profile', { user });
+    });
 }
 
 function showRoute(req, res, next) {
   User
     .findById(req.params.id)
-    .populate('reviews.createdBy')
+    .populate('reviews.createdBy skills')
     .exec()
     .then(user => {
       return res.render('users/show', { user });
@@ -26,15 +39,45 @@ function showRoute(req, res, next) {
 }
 
 function editRoute(req, res) {
-  return res.render('registration/edit');
+  Skill
+    .find()
+    .exec()
+    .then(skills => {
+      res.render('registration/edit', { skills });
+    });
 }
 
+// function skillsUpdate(req, res, next) {
+//   User
+//     .findById(req.params.id)
+//     .exec()
+//     .then(user => {
+//       if (!user) return res.notFound();
+//
+//       req.body.createdBy = req.user;
+//       if(user.skill.checked){
+//         user.skills.push();
+//       }
+//     })
+//     .then(() => res.redirect(`/users/${req.params.id}`))
+//     .catch((err) => {
+//       if (err.name === 'ValidationError')   res.badRequest(`/users/${req.params.id}`, err.toString());
+//       next(err);
+//     });
+// }
+
+
+// req.body.skills = [id, id2, id3]
+// Find all the skills
+// res.render('users/skills/new', { skills })
+
 function updateRoute(req, res, next) {
+  console.log(req.body);
   for(const field in req.body) {
-    req.user[field] = req.body[field];
+    req.currentUser[field] = req.body[field];
   }
 
-  req.user.save()
+  req.currentUser.save()
     .then(() => res.redirect('/profile'))
     .catch((err) => {
       if(err.name === 'ValidationError') return res.badRequest('/profile/edit', err.toString());
@@ -49,7 +92,7 @@ function createReviewRoute(req, res, next) {
     .then(user => {
       if (!user) return res.notFound();
 
-      req.body.createdBy = req.user;
+      req.body.createdBy = req.currentUser;
       user.reviews.push(req.body);
 
       return user.save();
@@ -85,4 +128,5 @@ module.exports = {
   update: updateRoute,
   createReview: createReviewRoute,
   deleteReview: deleteReviewRoute
+  // skills: skillsUpdate
 };

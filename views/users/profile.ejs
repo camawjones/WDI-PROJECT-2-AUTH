@@ -1,16 +1,18 @@
-<div class="container">
-  <img src="<%= user.image %>" alt="<%= user.name %>">
-  <h2><%= user.username %></h2>
+<p><%= user %></p>
 
-  <a href="/users/<%= user.id %>/edit" class="button">Edit</a>
-  <form method="POST" action="/users/<%= user.id %>">
+<div class="container">
+  <img src="<%= currentUser.image %>" alt="<%= currentUser.name %>">
+  <h2><%= currentUser.username %></h2>
+
+  <a href="/users/<%= currentUser.id %>/edit" class="button">Edit</a>
+  <form method="POST" action="/users/<%= currentUser.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <button class="button alert">Delete</button>
   </form>
 
   <section>
     <h3>Reviews</h3>
-    <% user.reviews.forEach((review) => { %>
+    <% currentUser.reviews.forEach((review) => { %>
       <p><%= review.content %></p>
       <p><%= review.rating %></p>
       <img src="<%= review.createdBy.image %>">

@@ -6,7 +6,9 @@
     <% include ./partials/_stylesheets %>
   </head>
   <body>
-    <% include ./partials/_navbar %>
+    <% if (activePath !== '/') { %>
+      <% include ./partials/_navbar %>
+    <% } %>
     <% for(const type in messages) { %>
       <div class="callout <%= type %>">
         <h5><%= messages[type] %></h5>
@@ -15,6 +17,7 @@
     <main class="row">
       <%- body %>
     </main>
+
 
     <% include ./partials/_scripts %>
   </body>

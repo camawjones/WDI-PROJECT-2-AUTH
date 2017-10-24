@@ -16,8 +16,13 @@ function sessionCreate(req, res) {
       }
       // console.log('heyyyyy');
       req.session.userId = user._id;
+      req.session.isAuthenticated = true;
 
-      return res.redirect('/users');
+      req.user = user;
+
+      req.flash('alert-success', `Welcome back, ${user.username}!`);
+
+      return res.redirect('/profile');
     });
 }
 

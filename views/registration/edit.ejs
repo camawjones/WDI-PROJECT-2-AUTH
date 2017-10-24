@@ -1,22 +1,35 @@
 <div class="container">
-<form class="col-4" method="POST" action="/profile">
+<form class="col-4" method="POST" action="/users/<%= currentUser._id %>">
   <input type="hidden" name="_method" value="PUT">
   <div>
     <label for="firstName">First Name</label>
-    <input type="text" name="firstName" id="firstName" required minlength="2" value="<%= user.firstName %>">
+    <input type="text" name="firstName" id="firstName" required minlength="2" value="<%= currentUser.firstName %>">
   </div>
   <div>
     <label for="lastName">Last Name</label>
-    <input type="text" name="lastName" id="lastName" required minlength="2" value="<%= user.lastName %>">
+    <input type="text" name="lastName" id="lastName" required minlength="2" value="<%= currentUser.lastName %>">
   </div>
   <div>
     <label for="username">Username</label>
-    <input type="text" name="username" id="username" required value="<%= user.username %>">
+    <input type="text" name="username" id="username" required value="<%= currentUser.username %>">
   </div>
   <div>
     <label for="email">Email</label>
-    <input type="email" name="email" id="email" required value="<%= user.email %>">
+    <input type="email" name="email" id="email" required value="<%= currentUser.email %>">
   </div>
+  <div>
+    <label for="skills">Skills</label>
+    <% skills.forEach(skill => { %>
+      <label class="checkbox-inline">
+        <% if ((`${currentUser.skills}`).includes(`${skill.id}`)) { %>
+          <input type="checkbox" name="skills" value="<%= skill.id %>" checked><i class="<%= skill.icon %> colored"></i>
+        <% } else { %>
+          <input type="checkbox" name="skills" value="<%= skill.id %>"><i class="<%= skill.icon %> colored"></i>
+        <% } %>
+      </label>
+    <% }); %>
+  </div>
+
   <div>
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
@@ -26,6 +39,6 @@
     <input type="password" name="passwordConfirmation" id="passwordConfirmation" required>
   </div>
 
-  <button class="button">Register</button>
+  <button class="button">EDIT PROFILE</button>
 </form>
 </div>

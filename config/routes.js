@@ -31,6 +31,10 @@ router.route('/users/:id/reviews')
   .post(secureRoute, users.createReview)
   .delete(secureRoute, users.deleteReview);
 
+// router.route('/users/:id/skills')
+//   .post(secureRoute, users.skillsUpdate);
+
+
 // DELETE
 router.route('/logout')
   .get(sessions.delete);

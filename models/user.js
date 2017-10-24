@@ -7,6 +7,8 @@ const reviewsSchema = new mongoose.Schema({
   rating: { type: Number, required: true }
 });
 
+
+
 const userSchema = new mongoose.Schema({
   firstName: { type: String, minlength: 2, required: true, trim: true},
   lastName: {type: String, minLength: 2, required: true, trim: true},
@@ -15,7 +17,8 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   image: { type: String, required: true },
   rating: { type: Number, required: true, default: 0 },
-  reviews: [reviewsSchema]
+  reviews: [reviewsSchema],
+  skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }]
 });
 
 userSchema.pre('validate', function calculateRating(next) {

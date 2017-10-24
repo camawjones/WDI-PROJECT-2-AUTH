@@ -7,7 +7,14 @@ function authenticationsNew(req, res) {
 function authenticationsCreate(req, res, next) {
   User
     .create(req.body)
-    .then(() => res.redirect('/login'))
+    .then((user) => {
+      req.session.userId = user.id;
+      req.currentUser = user;
+      res.locals.currentUser = user;
+      res.locals.isAuthenticated = true;
+
+      res.redirect('/profile');
+    })
     .catch((err) => {
       if(err.name === 'ValidationError') return res.badRequest('/register', err.toString());
       next(err);

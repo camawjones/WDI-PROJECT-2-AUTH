@@ -20,6 +20,14 @@
     <label for="image">Image URL</label>
     <input type="text" name="image" id="image" class="form-control">
   </div>
+  <div>
+    <label for="skills">Skills</label>
+    <% skills.forEach(skill => { %>
+      <label class="checkbox-inline">
+        <input type="checkbox" name="skills" value="<%= skill.id %>"><i class="<%= skill.icon %> colored"></i>
+      </label>
+    <% }); %>
+  </div>
   <div class="form-group">
     <label for="password">Password</label>
     <input type="password" name="password" id="password" class="form-control">

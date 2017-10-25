@@ -1,7 +1,13 @@
 const User = require('../models/user');
+const Skill = require('../models/skill');
 
 function authenticationsNew(req, res) {
-  return res.render('registration/new');
+  Skill
+    .find()
+    .exec()
+    .then(skills => {
+      return res.render('registration/new', { skills });
+    });
 }
 
 function authenticationsCreate(req, res, next) {

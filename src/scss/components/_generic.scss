@@ -1,0 +1,88 @@
+h1 {
+  font-family: helvetica;
+}
+
+footer {
+  margin: 50px 120px;
+  width: 280px;
+  font-size: 22px;
+  text-align: center;
+  line-height: 50px;
+  height: 100px;
+  font-family: 'HK Grotesk';
+}
+
+a {
+  color: #ff6666;
+  text-decoration: none; /* no underline */
+}
+a:hover {
+  color: white;
+  text-decoration: none; /* no underline */
+}
+
+.login:hover {
+  color: #ff6666;
+  text-decoration: none;
+}
+
+
+
+.login {
+
+  float:left;
+  width: 120px;
+  display: inline-block;
+  background-color: white;
+  color: #ff6666;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.register {
+  float: right;
+  width: 120px;
+  display: inline-block;
+  background-color: white;
+  color: #ff6666;
+  height: 50px;
+  border-radius: 5px;
+}
+
+body {
+  font-family: 'HK Grotesk';
+  // background-image: url('../images/background-fit.png');
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  margin: 0;
+  padding: 0;
+
+  // overflow: hidden;
+}
+
+.navbar {
+  border: none;
+  margin-bottom: 0;
+  box-shadow: 0 1px 6px rgba(57,73,76,.35);
+  height: 70px;
+  color: #ffffcc!important;
+}
+
+.btn .btn-primary {
+  background-color: red;
+}
+
+
+
+
+
+
+form {
+  margin: 30px auto;
+}
+
+.card {
+  margin: 20px;
+}

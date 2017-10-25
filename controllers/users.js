@@ -47,30 +47,6 @@ function editRoute(req, res) {
     });
 }
 
-// function skillsUpdate(req, res, next) {
-//   User
-//     .findById(req.params.id)
-//     .exec()
-//     .then(user => {
-//       if (!user) return res.notFound();
-//
-//       req.body.createdBy = req.user;
-//       if(user.skill.checked){
-//         user.skills.push();
-//       }
-//     })
-//     .then(() => res.redirect(`/users/${req.params.id}`))
-//     .catch((err) => {
-//       if (err.name === 'ValidationError')   res.badRequest(`/users/${req.params.id}`, err.toString());
-//       next(err);
-//     });
-// }
-
-
-// req.body.skills = [id, id2, id3]
-// Find all the skills
-// res.render('users/skills/new', { skills })
-
 function updateRoute(req, res, next) {
   console.log(req.body);
   for(const field in req.body) {

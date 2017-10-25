@@ -1,22 +1,41 @@
-<p><%= user %></p>
 
 <div class="container">
-  <img src="<%= currentUser.image %>" alt="<%= currentUser.name %>">
-  <h2><%= currentUser.username %></h2>
+  <div class="row main-body">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-4 profile-text">
+      <div class="prof-edit"><h2><%= currentUser.username %>'s profile</h2></div>
+  <img src="<%= currentUser.image %>" style="width: 300px" class="profilepic" alt="<%= currentUser.name %>">
 
-  <a href="/users/<%= currentUser.id %>/edit" class="button">Edit</a>
+  <form method="POST" action="/users/<%= currentUser.id %>/edit">
+    <input type="hidden" name="_method" value="EDIT">
+    <div class="delete-but">Edit</div>
+  </form>
   <form method="POST" action="/users/<%= currentUser.id %>">
     <input type="hidden" name="_method" value="DELETE">
-    <button class="button alert">Delete</button>
+    <div class="delete-but">Delete</div>
   </form>
-
-  <section>
-    <h3>Reviews</h3>
+</div>
+<div class="col-lg-4 profile-text">
+  <section  class="reviews-skills">
+    <h3 class="delete-but">Reviews</h3>
     <% currentUser.reviews.forEach((review) => { %>
       <p><%= review.content %></p>
       <p><%= review.rating %></p>
-      <img src="<%= review.createdBy.image %>">
+      <img class="comment-img" src="<%= review.createdBy.image %>">
       <small><%= review.createdBy.username %></small>
     <% }) %>
   </section>
+  <section class="skills-prof">
+    <h3 class="delete-but">Skills</h3>
+    <% user.skills.forEach(skill => { %>
+      <div class="skill-list">
+    <i class="<%= skill.icon %>"></i>
+      <h4 class="card-title"><%= skill.name %></h4>
+  </div>
+    <% }) %>
+  </section>
+
+</div>
+<div class="col-lg-2"></div>
+</div>
 </div>

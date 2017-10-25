@@ -1,0 +1,59 @@
+body {
+  font-family: 'HK Grotesk';
+  // background-image: url('../images/background-fit.png');
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  margin: 0;
+  padding: 0;
+  // overflow: hidden;
+}
+
+.gigling {
+  font-weight: 800;
+  font-size: 30px;
+  color: #ff6666;
+}
+
+.noredbutton:hover {
+  background-color: grey;
+  color: white;
+  border-color: grey;
+}
+
+.noredbutton {
+  background-color: #ff6666;
+  color: white;
+  border-color: #ff6666 ;
+}
+
+.navbar {
+  border: none;
+  margin-bottom: 0;
+  box-shadow: 0 1px 6px rgba(57,73,76,.35);
+  height: 70px;
+  color: #ffffcc!important;
+}
+
+.btn .btn-primary {
+  background-color: red;
+}
+
+.logo-small {
+  width: 25px;
+  margin-right: 30px;
+}
+
+.navvy {
+  color: white;
+  padding: 20px 20px 5px 20px;
+}
+
+.alert-success {
+  height: 40px;
+  background-color: #ffffcc;
+  line-height: 40px;
+  color: #ff6666;
+  padding-left: 40px;
+}

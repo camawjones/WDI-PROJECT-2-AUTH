@@ -23,6 +23,9 @@ Skill
   }, {
     name: 'C++',
     icon: 'devicon-cplusplus-plain'
+  }, {
+    name: 'HTML 5',
+    icon: 'devicon-html5-plain'
   }])
   .then(skills => {
     console.log(`${skills.length} skills were seeded`);

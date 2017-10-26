@@ -1,15 +1,13 @@
 
+
 <div class="container">
   <div class="row main-body">
     <div class="col-lg-2"></div>
     <div class="col-lg-4 profile-text">
-      <div class="prof-edit"><h2><%= currentUser.username %>'s profile</h2></div>
+      <div class="prof-edit"><h2 class="prof-name"><%= currentUser.username %>'s profile</h2></div>
   <img src="<%= currentUser.image %>" style="width: 300px" class="profilepic" alt="<%= currentUser.name %>">
 
-  <form method="POST" action="/users/<%= currentUser.id %>/edit">
-    <input type="hidden" name="_method" value="EDIT">
-    <div class="delete-but">Edit</div>
-  </form>
+  <div class="prof-edit"><a href="/users/<%= currentUser.id %>/edit" class="button">Edit</a></div>
   <form method="POST" action="/users/<%= currentUser.id %>">
     <input type="hidden" name="_method" value="DELETE">
     <div class="delete-but">Delete</div>

@@ -1,10 +1,9 @@
-<div class="container fl-container">
- <div class="row">
-   <div class="col-lg-2"></div>
-   <div class="col-lg-4">
-  <img src="<%= user.image %>" alt="<%= user.name %>">
-  <h2><%= user.username %></h2>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+   <div class="col-lg-4 profile-text">
+   <div class="prof-edit"><h2><%= user.username %>'s profile</h2></div>
+  <img src="<%= user.image %>" alt="<%= user.username %>" class="profilepic">
   <section class="col-lg-4">
     <h3>Reviews</h3>
     <% user.reviews.forEach((review) => { %>
@@ -28,5 +27,5 @@
       </form>
     </section>
   <% } %>
-</div>
+  <div class="col-lg-2"></div>
 </div>

@@ -1,31 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2"></div>
-   <div class="col-lg-4 profile-text">
-   <div class="prof-edit"><h2><%= user.username %>'s profile</h2></div>
+    <div class="prof-edit col-lg-12 prof-name"><h2><%= user.username %>'s profile</h2></div>
+   <div class="col-lg-12 profile-text">
   <img src="<%= user.image %>" alt="<%= user.username %>" class="profilepic">
-  <section class="col-lg-4">
-    <h3>Reviews</h3>
-    <% user.reviews.forEach((review) => { %>
-      <p><%= review.content %></p>
-      <p><%= review.rating %></p>
-      <img src="<%= review.createdBy.image %>">
-      <small><%= review.createdBy.username %></small>
+  <section class="skills-prof col-lg-6 col-md-6 col-sm-12">
+    <h3 class="index-name skills-prof-title">Skills</h3>
+    <% user.skills.forEach((skill) => { %>
+    <div class="skill-list">
+      <p><%= skill.name %></p>
+      <i class="<%= skill.icon %>"></i>
+    </div>
     <% }) %>
   </section>
-
+  <section class="col-lg-6 disp-reviews">
+    <h3 class="rev-rat">Reviews</h3>
+    <% user.reviews.forEach((review) => { %>
+    <div class="user-review">
+      <p><strong>Review:</strong> <%= review.content %></p>
+      <p><strong>Rating:</strong> <%= review.rating %></p>
+      <img style="float: right" class="review-created-img" src="<%= review.createdBy.image %>">
+      <small><%= review.createdBy.username %></small>
+    </div>
+    <% }) %>
+  </section>
   <% if(locals.isAuthenticated) { %>
-    <section>
-      <h3>Leave a review</h3>
-      <form method="POST" action="/users/<%= user.id %>/reviews">
-        <label for="rating">Rating</label>
-        <input id="rating" type="number" name="rating" placeholder="rating">
-
-        <label for="content">Review</label>
-        <textarea name="content" id="content" placeholder="Comment" required maxlength="255"></textarea>
-        <button class="button">Leave a review</button>
+    <section class="text-area col-lg-6 review-section">
+      <form method="POST" action="/users/<%= user.id %>/reviews" class="form-group form-prof">
+        <label for="rating" class="rating rev-rat">Rating</label>
+        <input id="rating" type="number" name="rating" placeholder="rating" class="form-control">
+        <label for="content" class="rev-rat">Review</label>
+        <textarea name="content" id="content" placeholder="Comment" required maxlength="255" class="form-control prof-com"></textarea>
+        <button class="button-rev">Leave a review</button>
       </form>
     </section>
   <% } %>
-  <div class="col-lg-2"></div>
 </div>

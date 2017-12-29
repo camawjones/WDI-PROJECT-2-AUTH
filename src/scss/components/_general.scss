@@ -21,6 +21,12 @@ body {
   color: #ff6666;
 }
 
+.btn:active, .btn-primary:active, .noredbutton:active {
+  background-color: grey;
+  color: white;
+  border-color: grey;
+}
+
 .noredbutton:hover {
   background-color: grey;
   color: white;
@@ -28,9 +34,18 @@ body {
 }
 
 .noredbutton {
+  right: 0;
+  bottom: 0;
+  position: absolute;
   background-color: #ff6666;
   color: white;
   border-color: #ff6666 ;
+}
+
+.noredbutton, .logins {
+  right: 0;
+  bottom: 0;
+  position: relative;
 }
 
 .navbar {

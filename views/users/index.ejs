@@ -2,13 +2,18 @@
   <h1 class="fl-head">Find a Developer</h1>
   <div class="row">
   <% users.forEach((user) => { %>
+    <% console.log(user) %>
     <div class="col-sm-12 col-md-4 col-lg-3">
       <div class="card">
+      <div class="profile-img">
         <img class="card-img-top" src="<%= user.image %>" alt="<%= user.name %>">
+      </div>
         <div class="card-body">
-          <h4 class="card-title"><%= user.username %></h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-          <a href="/users/<%= user.id %>" class="btn btn-primary noredbutton">View</a>
+          <h3 class="card-title index-name"><%= user.username %></h3>
+          <h4 class="index-name">Skills: </h4><% user.skills.forEach((skill) => { %>
+            <h4><%= skill.name %></h4>
+          <% }) %>
+          <a href="/users/<%= user.id %>" class="btn btn-primary noredbutton view">View</a>
         </div>
       </div>
     </div>

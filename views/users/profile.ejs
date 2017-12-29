@@ -1,11 +1,10 @@
 
-
 <div class="container">
   <div class="row main-body">
+    <div class="prof-edit col-lg-12"><h2 class="prof-name">My Profile</h2></div>
     <div class="col-lg-2"></div>
     <div class="col-lg-4 profile-text">
-      <div class="prof-edit"><h2 class="prof-name"><%= currentUser.username %>'s profile</h2></div>
-  <img src="<%= currentUser.image %>" style="width: 300px" class="profilepic" alt="<%= currentUser.name %>">
+  <img src="<%= currentUser.image %>" class="myprofilepic" alt="<%= currentUser.name %>">
 
   <div class="prof-edit"><a href="/users/<%= currentUser.id %>/edit" class="button">Edit</a></div>
   <form method="POST" action="/users/<%= currentUser.id %>">
@@ -14,8 +13,8 @@
   </form>
 </div>
 <div class="col-lg-4 profile-text">
-  <section  class="reviews-skills">
-    <h3 class="delete-but">Reviews</h3>
+  <section class="reviews-skills">
+    <h3 class="delete-but">Reviews</i></h3>
     <% currentUser.reviews.forEach((review) => { %>
       <p><%= review.content %></p>
       <p><%= review.rating %></p>
@@ -23,8 +22,8 @@
       <small><%= review.createdBy.username %></small>
     <% }) %>
   </section>
-  <section class="skills-prof">
-    <h3 class="delete-but">Skills</h3>
+  <section class="skills-myprof">
+    <h3 class="skills-tab">Skills</h3>
     <% user.skills.forEach(skill => { %>
       <div class="skill-list">
     <i class="<%= skill.icon %>"></i>

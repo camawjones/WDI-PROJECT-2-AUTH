@@ -1,46 +1,156 @@
 .profilepic {
-  margin: 0px 0 10px 0;
-  border: 3px solid #ff6666;
+  margin: 40px 0px 10px 50px;
+  border: 3px solid #f66;
   border-radius: 5px;
+  width: 300px;
+  height: 300px;
+  float: left;
 }
 
 .reviews-skills {
-  margin: 40px;
-  height: 31.5vh;
-  width: 300px;
-  background-color:#d4d7d7;
+  height: 300px;
+  width: inherit;
+  background-color: #d4d7d7;
 }
 
 .profile-text {
   text-align: center;
 }
 
+.myprofilepic {
+  border: 3px solid #ff6666;
+  border-radius: 5px;
+  width: inherit;
+  height: 300px;
+  float: left;
+}
+
 .delete-but {
-  width: 300px;
+  width: inherit;
   height: 40px;
   background-color: #ff6666;
   font-size: 18px;
   color: white;
-  margin: 10px auto;
   border-radius: 5px;
   line-height: 40px;
 }
 
+.skills-prof {
+  margin: 40px 50px 40px 0;
+  height: 300px;
+  width: 300px;
+  float: right;
+  background-color: #fff;
+  line-height: 30px;
+  border: 3px solid #ff6666;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.skills-myprof {
+  margin: 30px 50px 40px 0;
+  height: 300px;
+  width: inherit;
+  background-color: #fff;
+  line-height: 30px;
+  border: 3px solid #ff6666;
+  border-radius: 4px;
+}
+
+.skills-tab {
+  width: inherit;
+  height: 40px;
+  border-bottom: 3px solid;
+  font-size: 18px;
+  color: #ff6666;
+  line-height: 40px;
+}
+
+.reviews-prof {
+  float: left;
+}
+
+
 .prof-edit {
   font-size: 20px;
   font-family: 'HK Grotesk';
-  width: 300px;
-  height: 50px;
+  // width: 300px;
   color: #ff6666;
   margin: 10px auto;
   line-height: 50px;
   border-radius: 5px;
-
 }
 
-.skills-prof {
-  margin: 40px;
-  height: 40vh;
+.prof-name {
+  text-align: center;
+}
+
+.review-section {
+  height: 280px;
+  width: 400px;
+  background-color: #ff6666;
+  border-radius: 3px;
+}
+
+.disp-reviews {
+  height: 280px;
+  background-color: #ff6666;
   width: 300px;
-  background-color:#d4d7d7;
+  float: left;
+  margin: 30px 50px;
+  overflow: scroll;
+  border-radius: 3px
+}
+.button-rev {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: white;
+  font-family: 'HK Grotesk';
+  color: #ff6666;
+}
+
+.rev-rat {
+  color: white;
+  font-family: 'HK Grotesk';
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.skills-prof-title {
+  border-bottom: 3px solid #ff6666;
+  color: #ff6666;
+  line-height: 40px;
+}
+
+.user-review {
+  width: 100%;
+  text-align: left;
+  min-height: 60px;
+  background-color: white;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+
+
+.review-created-img {
+  width: 50px;
+  border-radius: 50%;
+}
+
+.text-area {
+  overflow: auto;
+  bottom: 0;
+  width: 800px;
+  margin: 50px 50px 50px 50px;
+}
+
+.text-area, .prof-com {
+  overflow: auto;
+  bottom: 0;
+}
+
+.form, .form-prof {
+  margin: 0;
 }

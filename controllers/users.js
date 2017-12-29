@@ -9,6 +9,7 @@ function indexRoute(req, res, next) {
 
   User
     .find()
+    .populate('skills')
     .exec()
     .then(users => {
       console.log(users);
